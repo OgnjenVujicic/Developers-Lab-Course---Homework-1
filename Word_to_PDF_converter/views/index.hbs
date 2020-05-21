@@ -11,10 +11,12 @@
       <h3>Upload File Here</h3>
       <span> Number of conversions: {{counts}}</span> <br><br>
       <input type="file" name="upfile" value="">
-      <input type="submit" />
-      <a>   {{status}}</a>
+      <input type="submit" value="Start conversion" /> 
+      <a>   {{status}}</a><br><br>
+      <label for="email">Enter your email if you want to recive file there:</label>
+      <input type="email" id="email" name="email">
     </form>
-    <br><br>
+    <br>
     <button class="btn" onclick="window.location.href = '/download?path={{down_path}}';" {{button_status}} style="background-color: {{button_color}};"><i class="fa fa-download"></i> Download</button>
   </body>
 </html>

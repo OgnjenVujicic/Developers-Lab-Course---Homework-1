@@ -3,6 +3,7 @@ const upload = require("express-fileupload");
 const hbs = require("hbs");
 const converter = require("./converter");
 const fs = require("fs")
+const mail_sender = require("./send-email")
 
 const app = express();
 app.use(upload())
@@ -22,7 +23,7 @@ function iterateConvCount(){
 
 app.get('/', function(req, res) {
   res.render("index.hbs", {
-    status:"Start conversion.",
+    status:"After upload click the button",
     button_status: "disabled",
     button_color: "none",
     counts: readConvCounts()
@@ -51,6 +52,7 @@ app.post('/upload', function(req, res) {
         console.log("File Uploaded",name);
         file_loc = await converter.convertWordtoPDF(name); // da li ovdje try, catch block da ide ako dodje do grske? nisam mogao da izazovem gresku 
         iterateConvCount();
+        mail_sender(req.body.email, file_loc);
         res.render("index.hbs", {
           status : 'File converted.',
           button_status: "enabled",
