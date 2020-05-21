@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Word to PDF Converter</title>
+  </head>
+  <body>
+    <form class="fileupload" action="upload" method="post" enctype="multipart/form-data">
+      <h1>Online Free Word to PDF Converter</h1>
+      <h3>Upload File Here</h3>
+      <span> Number of conversions: {{counts}}</span> <br><br>
+      <input type="file" name="upfile" value="">
+      <input type="submit" />
+      <a>   {{status}}</a>
+    </form>
+    <br><br>
+    <button class="btn" onclick="window.location.href = '/download?path={{down_path}}';" {{button_status}} style="background-color: {{button_color}};"><i class="fa fa-download"></i> Download</button>
+  </body>
+</html>
